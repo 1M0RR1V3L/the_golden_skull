@@ -1,11 +1,13 @@
 extends Area2D
+## Fim da fase: ao tocar, mostra "FASE CONCLUÍDA!" e vai para a próxima fase.
 
-@onready var transition = get_parent().get_node("transition")
 @export var next_level : String = ""
 
 
 func _on_body_entered(body):
-	if body.name == "player" and !next_level == "":
-		transition.change_scene(next_level)
-	else:
-		print("No Scene loaded")
+	if not body.is_in_group("player"):
+		return
+	if next_level == "":
+		push_warning("goal sem next_level definido")
+		return
+	Transition.level_complete(next_level)

@@ -1,0 +1,67 @@
+# Comentários do Narrador durante o jogo.
+# Cada "~ cue" é uma situação; as linhas com "%" são sorteadas (uma por vez).
+# Disparados por scripts/narrator.gd (via GameState).
+
+~ caiu_buraco_2
+
+% Narrador: Ô de casa! Isso aí é um buraco, viu? Buraco. Não é atalho, não.
+% Narrador: Eu tava tomando meu café em paz e escuto aquele "AAAAH". Já sabia que era tu.
+% Narrador: Calma, calma. Até o João Grilo caiu num buraco uma vez. Só que foi uma vez.
+% Narrador: O chão fica EM CIMA do buraco. Fica a dica, de graça.
+=> END
+
+~ caiu_buraco_4
+
+% Narrador: Quatro vezes no buraco. Tu tá procurando a gaita ou petróleo?
+% Narrador: Pelo amor de Padim Ciço, pula ANTES da beirada, não DEPOIS.
+% Narrador: Vou pedir pro roteirista colocar uma placa: "BURACO". Ah não, ele é vagabundo, esquece.
+% Narrador: Se cair no buraco desse dinheiro, tu já tava rico e nem precisava da gaita.
+=> END
+
+~ caiu_buraco_muitos
+
+% Narrador: Sabe o que é isso? Isso é um relacionamento sério com o buraco.
+% Narrador: Já pensei em cobrar aluguel desse buraco, de tanto que tu mora nele.
+% Narrador: Olha, eu desisto. Vou terminar meu café. Me chama quando passar daí.
+% Narrador: Tu caiu tanto que o buraco já tá te chamando pelo nome.
+% Narrador: Dica profissional: segura o botão de pulo que tu pula mais alto. Tô falando sério agora.
+=> END
+
+~ game_over_1
+
+% Narrador: Morreu? Na primeira? Eu nem tinha terminado de esquentar a água do café.
+% Narrador: Eita. Bom, pelo menos tu é pobre e não tinha nada pra perder mesmo.
+% Narrador: Relaxa, a primeira morte ninguém conta. Eu conto. Mas ninguém mais.
+=> END
+
+~ game_over_2
+
+% Narrador: De novo? Os esqueletos tão até fazendo festa lá embaixo.
+% Narrador: Segunda vez. O cientista maluco vai acabar transformando teus ossos em ouro também.
+% Narrador: Tá vendo aquele coração lá em cima? Ele serve pra alguma coisa, viu?
+=> END
+
+~ game_over_3
+
+% Narrador: Terceira vez... Tu tem certeza que quer essa gaita? Tem gaita na feira por cinco reais.
+% Narrador: O João Grilo me ligou perguntando se tu já desistiu. Falei que não, mas tô em dúvida.
+% Narrador: Eu já tomei três cafés esperando tu passar dessa fase. Três!
+% Narrador: Dica: as flechas especiais existem. O F atira, o Q e o E trocam. De nada.
+=> END
+
+~ game_over_muitos
+
+% Narrador: Olha, a essa altura eu já perdi a conta. E olha que eu sou o narrador, é meu trabalho contar.
+% Narrador: Vou ser sincero: o roteirista nunca imaginou que alguém morreria tanto assim.
+% Narrador: Tu é teimoso, hein? Gosto disso. Morre, mas volta. Igual a esqueleto dessa fase.
+% Narrador: Sabe o que mais dá pontos? Terminar o jogo. Só lembrando.
+% Narrador: Já tô pensando em mudar o nome do jogo pra "A Gaita de Ouro e o Cara que Morria".
+=> END
+
+~ dica_recomeco
+
+% Narrador: Respira. Pula a pilha de ossos antes que ela levante, e mira nos fantasmas de longe.
+% Narrador: Dica de amigo: esqueleto desmontado remonta. Acerta a pilha de ossos de novo que ele some de vez.
+% Narrador: Lembra: as lanternas guardam teu lugar. Passa por elas e o buraco dói menos.
+% Narrador: Os fantasmas perseguem, mas são lentos. Flecha neles de longe, sem pressa.
+=> END

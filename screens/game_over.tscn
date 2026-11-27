@@ -6,12 +6,16 @@
 [sub_resource type="GDScript" id="GDScript_41fak"]
 script/source = "extends Control
 
+func _ready():
+	GameState.narrate_game_over()
+
+
 func _on_restart_bnt_pressed():
-	get_tree().change_scene_to_file(\"res://scenes/cemetery.tscn\")
+	GameState.restart_level()
 
 
 func _on_quit_bnt_pressed():
-	get_tree().quit()
+	get_tree().change_scene_to_file(\"res://screens/menu.tscn\")
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fq6hf"]
@@ -102,7 +106,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_7x0fr")
 [node name="Quit_bnt" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_tc43a")
-text = "Quit"
+text = "Menu"
 
 [connection signal="pressed" from="VBoxContainer/Restart_bnt" to="." method="_on_restart_bnt_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit_bnt" to="." method="_on_quit_bnt_pressed"]

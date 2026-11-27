@@ -111,11 +111,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -95.5
-offset_top = -107.5
+offset_top = -100.0
 offset_right = 95.5
-offset_bottom = 107.5
+offset_bottom = 115.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 1
 scale = Vector2(1.26655, 1.13342)
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -228,7 +228,7 @@ text = "Credits"
 layout_mode = 2
 size_flags_horizontal = 0
 focus_neighbor_top = NodePath("../CreditsButton")
-focus_neighbor_bottom = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
 theme = SubResource("Theme_mt25a")
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -237,10 +237,23 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "Controls"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 focus_neighbor_top = NodePath("../ControlsButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme = SubResource("Theme_mt25a")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
 theme = SubResource("Theme_400oe")
 theme_type_variation = &"FlatButton"
@@ -252,10 +265,11 @@ text = "Quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ol6ip")
+bus = &"Music"
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ControlsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

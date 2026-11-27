@@ -61,7 +61,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("3_l0jiy")
-text = "A, <- = ESQUERDA | D,  -> = DIREITA | W, SPACE = PULAR"
+text = "A, <- = ESQUERDA | D,  -> = DIREITA
+W, SETA CIMA, SPACE = PULAR (SEGURE = MAIS ALTO)"
 fit_content = true
 autowrap_mode = 0
 
@@ -79,7 +80,9 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("3_l0jiy")
-text = "ESC = PAUSAR, RESUMIR JOGO | ENTER = CONFIRMAR"
+text = "F, J = ATIRAR FLECHA | Q / E = TROCAR FLECHA
+ESC, P = PAUSAR, RESUMIR JOGO | ESC NA INTRO = PULAR
+SETAS = NAVEGAR NOS MENUS | ENTER = CONFIRMAR"
 fit_content = true
 autowrap_mode = 0
 
@@ -89,5 +92,4 @@ size_flags_horizontal = 4
 theme = ExtResource("4_vy43i")
 text = "BACK TO MAIN MENU"
 
-[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -39,10 +39,11 @@
 [ext_resource type="PackedScene" uid="uid://b1djeeeq62uke" path="res://scenes/goal.tscn" id="34_rclu1"]
 [ext_resource type="PackedScene" uid="uid://dofwoj402bvsm" path="res://characters/enemies/enemy_ghost.tscn" id="37_0gdir"]
 [ext_resource type="Shader" path="res://shader/transition.gdshader" id="37_ax0my"]
-[ext_resource type="Script" path="res://scripts/transition.gd" id="37_rsopo"]
-[ext_resource type="Script" path="res://scripts/color_react.gd" id="38_7ksp2"]
 [ext_resource type="AudioStream" uid="uid://ccfmt0rijpsgk" path="res://sound/alone-with-the-darkness-9859.mp3" id="42_6nris"]
 [ext_resource type="PackedScene" uid="uid://u8nu6xg2lxws" path="res://scenes/pause_menu.tscn" id="43_ng83b"]
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="90_cp"]
+[ext_resource type="Script" path="res://scripts/pickup.gd" id="90_pk"]
+[ext_resource type="Script" path="res://scripts/chest.gd" id="90_ch"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eclth"]
 texture = ExtResource("3_a24m4")
@@ -702,24 +703,53 @@ script = ExtResource("32_pb5h5")
 position = Vector2(5049, 629)
 shape = SubResource("RectangleShape2D_ymxv2")
 
-[node name="transition" type="CanvasLayer" parent="."]
-script = ExtResource("37_rsopo")
-
-[node name="color_react" type="ColorRect" parent="transition"]
-material = SubResource("ShaderMaterial_brude")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.00392157, 0.00392157, 0.00392157, 1)
-script = ExtResource("38_7ksp2")
-metadata/_edit_use_anchors_ = true
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("42_6nris")
+bus = &"Music"
 autoplay = true
 
 [node name="pause_menu" parent="." instance=ExtResource("43_ng83b")]
+
+[node name="checkpoint" type="Area2D" parent="."]
+position = Vector2(6302, 470)
+script = ExtResource("90_cp")
+
+[node name="flechas_pesadas" type="Area2D" parent="."]
+position = Vector2(1806, 280)
+script = ExtResource("90_pk")
+kind = "heavy"
+amount = 5
+
+[node name="flechas_rapidas" type="Area2D" parent="."]
+position = Vector2(4318, 280)
+script = ExtResource("90_pk")
+kind = "quick"
+amount = 15
+
+[node name="kit_medico" type="Area2D" parent="."]
+position = Vector2(5206, 280)
+script = ExtResource("90_pk")
+kind = "health"
+
+[node name="bau_final" type="Area2D" parent="."]
+position = Vector2(9654, 400)
+script = ExtResource("90_ch")
+coins = 10
+
+[node name="esqueleto_saltador1" parent="." instance=ExtResource("29_7amyl")]
+position = Vector2(4555, 305)
+start_dormant = false
+jumper = true
+
+[node name="esqueleto_saltador2" parent="." instance=ExtResource("29_7amyl")]
+position = Vector2(6747, 417)
+start_dormant = false
+jumper = true
+
+[node name="fantasma_extra1" parent="." instance=ExtResource("37_0gdir")]
+position = Vector2(7301, 380)
+
+[node name="esqueleto_extra3" parent="." instance=ExtResource("29_7amyl")]
+position = Vector2(8096, 289)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

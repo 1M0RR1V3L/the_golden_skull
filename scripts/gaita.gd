@@ -1,20 +1,19 @@
 extends Area2D
+## A Gaita de Ouro: fim do jogo. Para o cronômetro, calcula a pontuação
+## e vai para a tela de resultados.
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+var _collected := false
 
 
 func _on_body_entered(body):
+	if _collected or not body.is_in_group("player"):
+		return
+	_collected = true
+	GameState.finish_game()
+	Audio.play("ui_confirm")
 	$sprite.play("collect")
 
 
-
 func _on_sprite_animation_finished():
-	get_tree().change_scene_to_file("res://screens/credits.tscn")
+	if _collected:
+		get_tree().change_scene_to_file("res://screens/results.tscn")
