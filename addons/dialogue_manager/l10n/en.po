@@ -5,7 +5,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: de\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,13 +13,16 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 msgid "start_a_new_file"
-msgstr "Start a new file"
+msgstr "Start a new file..."
 
 msgid "open_a_file"
 msgstr "Open a file"
 
 msgid "open.open"
 msgstr "Open..."
+
+msgid "open.quick_open"
+msgstr "Quick open..."
 
 msgid "open.no_recent_files"
 msgstr "No recent files"
@@ -30,8 +33,17 @@ msgstr "Clear recent files"
 msgid "save_all_files"
 msgstr "Save all files"
 
+msgid "all"
+msgstr "All"
+
+msgid "find_in_files"
+msgstr "Find in Dialogue..."
+
 msgid "test_dialogue"
-msgstr "Test dialogue"
+msgstr "Test dialogue from start of file"
+
+msgid "test_dialogue_from_line"
+msgstr "Test dialogue from current line"
 
 msgid "search_for_text"
 msgstr "Search for text"
@@ -42,8 +54,8 @@ msgstr "Insert"
 msgid "translations"
 msgstr "Translations"
 
-msgid "settings"
-msgstr "Settings"
+msgid "sponsor"
+msgstr "Sponsor"
 
 msgid "show_support"
 msgstr "Support Dialogue Manager"
@@ -69,8 +81,8 @@ msgstr "Auto advance"
 msgid "insert.templates"
 msgstr "Templates"
 
-msgid "insert.title"
-msgstr "Title"
+msgid "insert.cue"
+msgstr "Cue"
 
 msgid "insert.dialogue"
 msgstr "Dialogue"
@@ -88,13 +100,31 @@ msgid "insert.actions"
 msgstr "Actions"
 
 msgid "insert.jump"
-msgstr "Jump to title"
+msgstr "Jump to cue"
 
 msgid "insert.end_dialogue"
 msgstr "End dialogue"
 
 msgid "generate_line_ids"
-msgstr "Generate line IDs"
+msgstr "Generate line IDs..."
+
+msgid "generate_ids.warning_title"
+msgstr "Generate line IDs?"
+
+msgid "generate_ids.warning_text"
+msgstr "Generate line IDs for all lines in all dialogue files?\n\n**Make sure to commit any changes to source control BEFORE running this because it cannot be undone.**"
+
+msgid "generate_ids.ok_button"
+msgstr "Generate IDs"
+
+msgid "use_uuid_only_for_ids"
+msgstr "Use UUID only for IDs"
+
+msgid "set_id_prefix_length"
+msgstr "Set ID prefix length"
+
+msgid "id_prefix_length"
+msgstr "ID prefix length:"
 
 msgid "save_characters_to_csv"
 msgstr "Save character names to CSV..."
@@ -113,6 +143,9 @@ msgstr "Save changes"
 
 msgid "confirm_close.discard"
 msgstr "Discard"
+
+msgid "confirm_n_unsaved_files"
+msgstr "You have {count} unsaved dialogue files."
 
 msgid "buffer.save"
 msgstr "Save"
@@ -135,71 +168,26 @@ msgstr "Copy file path"
 msgid "buffer.show_in_filesystem"
 msgstr "Show in FileSystem"
 
-msgid "settings.invalid_test_scene"
-msgstr "\"{path}\" does not extend BaseDialogueTestScene."
-
-msgid "settings.revert_to_default_test_scene"
-msgstr "Revert to default test scene"
-
-msgid "settings.default_balloon_hint"
-msgstr "Custom balloon to use when calling \"DialogueManager.show_balloon()\""
-
-msgid "settings.revert_to_default_balloon"
-msgstr "Revert to default balloon"
-
-msgid "settings.default_balloon_path"
-msgstr "<example balloon>"
-
-msgid "settings.autoload"
-msgstr "Autoload"
-
-msgid "settings.path"
-msgstr "Path"
-
-msgid "settings.new_template"
-msgstr "New dialogue files will start with template text"
-
-msgid "settings.missing_keys"
-msgstr "Treat missing translation keys as errors"
-
-msgid "settings.missing_keys_hint"
-msgstr "If you are using static translation keys then having this enabled will help you find any lines that you haven't added a key to yet."
-
-msgid "settings.characters_translations"
-msgstr "Export character names in translation files"
-
-msgid "settings.wrap_long_lines"
-msgstr "Wrap long lines"
-
-msgid "settings.include_failed_responses"
-msgstr "Include responses with failed conditions"
-
-msgid "settings.ignore_missing_state_values"
-msgstr "Skip over missing state value errors (not recommended)"
-
-msgid "settings.custom_test_scene"
-msgstr "Custom test scene (must extend BaseDialogueTestScene)"
-
-msgid "settings.default_csv_locale"
-msgstr "Default CSV Locale"
-
-msgid "settings.states_shortcuts"
-msgstr "State Shortcuts"
-
-msgid "settings.states_message"
-msgstr "If an autoload is enabled here you can refer to its properties and methods without having to use its name."
-
-msgid "settings.states_hint"
-msgstr "ie. Instead of \"SomeState.some_property\" you could just use \"some_property\""
-
-msgid "settings.recompile_warning"
-msgstr "Changing these settings will force a recompile of all dialogue. Only change them if you know what you are doing."
-
-msgid "settings.create_lines_for_responses_with_characters"
-msgstr "Create child dialogue line for responses with character names in them"
-
 msgid "n_of_n"
 msgstr "{index} of {total}"
+
+msgid "search.find_in_dialogue"
+msgstr "Find in Dialogue"
+
+msgid "search.find"
+msgstr "Find:"
+
+msgid "search.find_all"
+msgstr "Find all..."
+
+msgid "search.placeholder"
+msgstr "Text to search for"
+
+msgid "search.replace_placeholder"
+msgstr "Text to replace it with"
+
+msgid "search.replace_selected"
+msgstr "Replace selected"
 
 msgid "search.previous"
 msgstr "Previous"
@@ -225,8 +213,8 @@ msgstr "Replace all"
 msgid "files_list.filter"
 msgstr "Filter files"
 
-msgid "titles_list.filter"
-msgstr "Filter titles"
+msgid "cues_list.filter"
+msgstr "Filter cues"
 
 msgid "errors.key_not_found"
 msgstr "Key \"{key}\" not found."
@@ -252,29 +240,26 @@ msgstr "Duplicate import name."
 msgid "errors.unknown_using"
 msgstr "Unknown autoload in using statement."
 
-msgid "errors.empty_title"
-msgstr "Titles cannot be empty."
+msgid "errors.empty_cue"
+msgstr "Cues cannot be empty."
 
-msgid "errors.duplicate_title"
-msgstr "There is already a title with that name."
+msgid "errors.duplicate_cue"
+msgstr "There is already a cue with that name."
 
-msgid "errors.nested_title"
-msgstr "Titles cannot be nested."
+msgid "errors.invalid_cue_string"
+msgstr "Cues can only contain alphanumeric characters and numbers."
 
-msgid "errors.invalid_title_string"
-msgstr "Titles can only contain alphanumeric characters and numbers."
+msgid "errors.invalid_cue_number"
+msgstr "Cues cannot begin with a number."
 
-msgid "errors.invalid_title_number"
-msgstr "Titles cannot begin with a number."
+msgid "errors.unknown_cue"
+msgstr "Unknown cue."
 
-msgid "errors.unknown_title"
-msgstr "Unknown title."
+msgid "errors.jump_to_invalid_cue"
+msgstr "This jump is pointing to an invalid cue."
 
-msgid "errors.jump_to_invalid_title"
-msgstr "This jump is pointing to an invalid title."
-
-msgid "errors.title_has_no_content"
-msgstr "That title has no content. Maybe change this to a \"=> END\"."
+msgid "errors.cue_has_no_content"
+msgstr "That cue has no content. Maybe change this to a \"=> END\"."
 
 msgid "errors.invalid_expression"
 msgstr "Expression is invalid."
@@ -283,7 +268,7 @@ msgid "errors.unexpected_condition"
 msgstr "Unexpected condition."
 
 msgid "errors.duplicate_id"
-msgstr "This ID is already on another line."
+msgstr "This ID is already in use."
 
 msgid "errors.missing_id"
 msgstr "This line is missing an ID."
@@ -348,6 +333,30 @@ msgstr "Invalid index."
 msgid "errors.unexpected_assignment"
 msgstr "Unexpected assignment."
 
+msgid "errors.expected_when_or_else"
+msgstr "Expecting a when or an else case."
+
+msgid "errors.only_one_else_allowed"
+msgstr "Only one else case is allowed per match."
+
+msgid "errors.when_must_belong_to_match"
+msgstr "When statements can only appear as children of match statements."
+
+msgid "errors.concurrent_line_without_origin"
+msgstr "Concurrent lines need an origin line that doesn't start with \"| \"."
+
+msgid "errors.goto_not_allowed_on_concurrect_lines"
+msgstr "Goto references are not allowed on concurrent dialogue lines."
+
+msgid "errors.unexpected_syntax_on_nested_dialogue_line"
+msgstr "Nested dialogue lines may only contain dialogue."
+
+msgid "errors.err_nested_dialogue_invalid_jump"
+msgstr "Only the last line of nested dialogue is allowed to include a jump."
+
+msgid "errors.missing_resource_for_autostart"
+msgstr "You need to specify a dialogue resource when using auto-start."
+
 msgid "errors.unknown"
 msgstr "Unknown syntax."
 
@@ -402,15 +411,6 @@ msgstr "You have {count} errors in your dialogue text. See Output for details."
 msgid "runtime.invalid_expression"
 msgstr "\"{expression}\" is not a valid expression: {error}"
 
-msgid "runtime.unsupported_array_method"
-msgstr "Calling \"{method_name}\" on an array isn't supported."
-
-msgid "runtime.unsupported_dictionary_method"
-msgstr "Calling \"{method_name}\" on a dictionary isn't supported."
-
-msgid "runtime.unsupported_quaternion_method"
-msgstr "Calling \"{method_name}\" on a quaternion isn't supported."
-
 msgid "runtime.array_index_out_of_bounds"
 msgstr "Index {index} out of bounds of array \"{array}\"."
 
@@ -421,16 +421,16 @@ msgid "runtime.key_not_found"
 msgstr "Key \"{key}\" not found in dictionary \"{dictionary}\""
 
 msgid "runtime.property_not_found"
-msgstr "\"{property}\" is not a property on any game states ({states})."
+msgstr "\"{property}\" not found. States with directly referenceable properties/methods/signals include {states}. Autoloads need to be referenced by their name to use their properties."
 
 msgid "runtime.property_not_found_missing_export"
-msgstr "\"{property}\" is not a property on any game states ({states}). You might need to add an [Export] decorator."
+msgstr "\"{property}\" not found. You might need to add an [Export] decorator. States with directly referenceable properties/methods/signals include {states}. Autoloads need to be referenced by their name to use their properties."
 
 msgid "runtime.method_not_found"
-msgstr "\"{method}\" is not a method on any game states ({states})"
+msgstr "Method \"{method}\" not found. States with directly referenceable properties/methods/signals include {states}. Autoloads need to be referenced by their name to use their properties."
 
 msgid "runtime.signal_not_found"
-msgstr "\"{signal_name}\" is not a signal on any game states ({states})"
+msgstr "Signal \"{signal_name}\" not found. States with directly referenceable properties/methods/signals include {states}. Autoloads need to be referenced by their name to use their properties."
 
 msgid "runtime.method_not_callable"
 msgstr "\"{method}\" is not a callable method on \"{object}\""
@@ -443,3 +443,114 @@ msgstr "\"{autoload}\" doesn't appear to be a valid autoload."
 
 msgid "runtime.something_went_wrong"
 msgstr "Something went wrong."
+
+msgid "runtime.expected_n_got_n_args"
+msgstr "\"{method}\" was called with {received} arguments but it only has {expected}."
+
+msgid "runtime.unsupported_array_type"
+msgstr "Array[{type}] isn't supported in mutations. Use Array as a type instead."
+
+msgid "runtime.dialogue_balloon_missing_start_method"
+msgstr "Your dialogue balloon is missing a \"start\" or \"Start\" method."
+
+msgid "runtime.top_level_states_share_name"
+msgstr "Multiple top-level states ({states}) share method/property/signal name \"{key}\". Only the first occurance is accessible to dialogue."
+
+msgid "translation_plugin.character_name"
+msgstr "Character name"
+
+msgid "Regions & Cues"
+msgstr "Regions & Cues"
+
+msgid "Regions"
+msgstr "Regions"
+
+msgid "Cues"
+msgstr "Cues"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "<empty>"
+msgstr "<empty>"
+
+msgid "Cue:"
+msgstr ""
+
+msgid "Static IDs can't be on a line with no other content."
+msgstr "Static IDs can't be on a line with no other content."
+
+msgid "\"{alias}\" will overwrite already registered context alias."
+msgstr "\"{alias}\" will overwrite already registered context alias."
+
+msgid "Alias cannot be empty."
+msgstr "Alias cannot be empty."
+
+msgid "Target cannot be null."
+msgstr "Target cannot be null."
+
+msgid "Cannot refresh dialogue line because its ID is missing a resource UID."
+msgstr "Cannot refresh dialogue line because its ID is missing a resource UID."
+
+msgid "None"
+msgstr "None"
+
+msgid "Dialogue"
+msgstr "Dialogue"
+
+msgid "{game_name} isn't running."
+msgstr "{game_name} isn't running."
+
+msgid "History"
+msgstr "History"
+
+msgid "Clear"
+msgstr "Clear"
+
+msgid "Context Nodes"
+msgstr "Context Nodes"
+
+msgid "Globals"
+msgstr "Globals"
+
+msgid "This is an example balloon. Create your own balloon in 'Project > Tools > Dialogue > Create Balloon...'"
+msgstr "This is an example balloon. Create your own balloon in 'Project > Tools > Dialogue > Create Balloon...'"
+
+msgid "Get example projects..."
+msgstr "Get example projects..."
+
+msgid "Buy my game..."
+msgstr "Buy my game..."
+
+msgid "Simple CSV export..."
+msgstr "Simple CSV export..."
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Comma"
+msgstr "Comma"
+
+msgid "Semicolon"
+msgstr "Semicolon"
+
+msgid "Tab"
+msgstr "Tab"
+
+msgid "CSV path"
+msgstr "CSV path"
+
+msgid "Default locale"
+msgstr "Default locale"
+
+msgid "Default delimiter"
+msgstr "Default delimiter"
+
+msgid "Include character name column"
+msgstr "Include character name column"
+
+msgid "Include notes coloumn"
+msgstr "Include notes coloumn"
+
+msgid "Export simple CSV"
+msgstr "Export simple CSV"

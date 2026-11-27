@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/options.gd" id="1_opts"]
+[ext_resource type="Theme" uid="uid://bw1l2vtpwhonr" path="res://theme/theme-text-title.tres" id="2_title"]
+[ext_resource type="Theme" uid="uid://btkegqcc6h8sx" path="res://theme/theme-text.tres" id="3_text"]
+[ext_resource type="Theme" uid="uid://b588ktng63i4k" path="res://theme/theme_button.tres" id="4_button"]
+
+[node name="options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_opts")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -220.0
+offset_right = 360.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_title")
+text = "OPTIONS"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MusicLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_text")
+text = "MUSICA"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../SfxSlider")
+max_value = 1.0
+step = 0.05
+
+[node name="SfxLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_text")
+text = "EFEITOS"
+fit_content = true
+autowrap_mode = 0
+
+[node name="SfxSlider" type="HSlider" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../MusicSlider")
+focus_neighbor_bottom = NodePath("../BackButton")
+max_value = 1.0
+step = 0.05
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../SfxSlider")
+focus_neighbor_bottom = NodePath("../MusicSlider")
+theme = ExtResource("4_button")
+text = "BACK TO MAIN MENU"
+
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

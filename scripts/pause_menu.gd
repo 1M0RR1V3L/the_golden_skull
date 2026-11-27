@@ -9,25 +9,35 @@ const MENU_SCENE := "res://screens/menu.tscn"
 
 
 func _ready() -> void:
+	# No navegador não existe "fechar o jogo": esconde o Quit.
+	if OS.has_feature("web"):
+		$menu_screen/Quit_button.visible = false
+		$menu_screen/Back_Menu_button.focus_neighbor_bottom = ^"../Resume_button"
+		resume_button.focus_neighbor_top = ^"../Back_Menu_button"
 	_set_paused(false)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and not Transition.busy:
 		_set_paused(not get_tree().paused)
 		get_viewport().set_input_as_handled()
 
 
 func _set_paused(paused: bool) -> void:
+	if paused != get_tree().paused:
+		Audio.play("pause")
 	get_tree().paused = paused
 	overlay.visible = paused
 	menu_screen.visible = paused
 	pause_button.visible = not paused
 	if paused:
+		UiFocus.quiet()
 		resume_button.grab_focus()
 
 
 func _on_pause_button_pressed() -> void:
+	if Transition.busy:
+		return
 	_set_paused(true)
 
 

@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://1oka26leym5x" path="res://items/gaita.tscn" id="12_ab6ht"]
 [ext_resource type="AudioStream" uid="uid://cwglgbx54o3fx" path="res://sound/Blear Moon - Runaway caves.mp3" id="13_wxok2"]
 [ext_resource type="PackedScene" uid="uid://u8nu6xg2lxws" path="res://scenes/pause_menu.tscn" id="14_vhrok"]
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="90_cp"]
+[ext_resource type="Script" path="res://scripts/pickup.gd" id="90_pk"]
+[ext_resource type="Script" path="res://scripts/chest.gd" id="90_ch"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1gn3v"]
 texture = ExtResource("6_jx1o5")
@@ -5466,27 +5469,27 @@ texture = ExtResource("2_3m26x")
 8:31/0 = 0
 8:31/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:31/0/physics_layer_0/angular_velocity = 0.0
-8:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 6, -4, 6, 0, 5, 4, 3, 8, 3, 8, 8, -8, 8)
 9:31/0 = 0
 9:31/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:31/0/physics_layer_0/angular_velocity = 0.0
-9:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3, -4, 2, 0, 2, 4, 1, 8, 0, 8, 8, -8, 8)
 10:31/0 = 0
 10:31/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:31/0/physics_layer_0/angular_velocity = 0.0
-10:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, -4, -1, 0, -1, 4, 0, 8, 0, 8, 8, -8, 8)
 11:31/0 = 0
 11:31/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:31/0/physics_layer_0/angular_velocity = 0.0
-11:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1, -4, 1, 0, 1, 4, 2, 8, 2, 8, 8, -8, 8)
 12:31/0 = 0
 12:31/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 12:31/0/physics_layer_0/angular_velocity = 0.0
-12:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2, -4, 3, 0, 4, 4, 5, 8, 6, 8, 8, -8, 8)
 13:31/0 = 0
 13:31/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 13:31/0/physics_layer_0/angular_velocity = 0.0
-13:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 6, -4, 6, 0, 7, 4, 7, 8, 7, 8, 8, -8, 8)
 7:32/0 = 0
 7:32/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:32/0/physics_layer_0/angular_velocity = 0.0
@@ -8685,8 +8688,66 @@ position = Vector2(16182, 68)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_wxok2")
+bus = &"Music"
 autoplay = true
 
 [node name="pause_menu" parent="." instance=ExtResource("14_vhrok")]
+
+[node name="checkpoint" type="Area2D" parent="."]
+position = Vector2(7150, 400)
+script = ExtResource("90_cp")
+
+[node name="flechas_veneno" type="Area2D" parent="."]
+position = Vector2(1300, 520)
+script = ExtResource("90_pk")
+kind = "poison"
+amount = 6
+
+[node name="flechas_rapidas" type="Area2D" parent="."]
+position = Vector2(6950, 400)
+script = ExtResource("90_pk")
+kind = "quick"
+amount = 15
+
+[node name="flechas_pesadas" type="Area2D" parent="."]
+position = Vector2(13700, 400)
+script = ExtResource("90_pk")
+kind = "heavy"
+amount = 6
+
+[node name="kit_medico" type="Area2D" parent="."]
+position = Vector2(12400, 355)
+script = ExtResource("90_pk")
+kind = "health"
+
+[node name="bau_final" type="Area2D" parent="."]
+position = Vector2(15950, 30)
+script = ExtResource("90_ch")
+coins = 15
+
+[node name="esqueleto_extra1" parent="." instance=ExtResource("10_qaxwv")]
+position = Vector2(2530, 608)
+
+[node name="esqueleto_saltador2" parent="." instance=ExtResource("10_qaxwv")]
+position = Vector2(3545, -64)
+start_dormant = false
+jumper = true
+
+[node name="esqueleto_extra3" parent="." instance=ExtResource("10_qaxwv")]
+position = Vector2(5652, 432)
+
+[node name="fantasma_extra1" parent="." instance=ExtResource("11_jpn4f")]
+position = Vector2(7700, 416)
+
+[node name="fantasma_extra2" parent="." instance=ExtResource("11_jpn4f")]
+position = Vector2(9100, 416)
+
+[node name="fantasma_extra3" parent="." instance=ExtResource("11_jpn4f")]
+position = Vector2(10100, 344)
+
+[node name="esqueleto_saltador4" parent="." instance=ExtResource("10_qaxwv")]
+position = Vector2(13042, 479)
+start_dormant = false
+jumper = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

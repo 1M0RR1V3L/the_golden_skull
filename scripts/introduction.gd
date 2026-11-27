@@ -24,7 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _start_game() -> void:
-	get_tree().change_scene_to_file(FIRST_LEVEL)
+	Transition.change_scene(FIRST_LEVEL)
 
 
 func _on_start_button_pressed() -> void:

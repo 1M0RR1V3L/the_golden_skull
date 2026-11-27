@@ -9,12 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://llvhjasrto3x" path="res://img/forest/background_obj.png" id="3_kxd6k"]
 [ext_resource type="Script" path="res://scripts/void.gd" id="4_pv4ao"]
 [ext_resource type="PackedScene" uid="uid://cqvbo6bkeys6a" path="res://characters/player/player.tscn" id="7_57dgg"]
-[ext_resource type="Script" path="res://scripts/transition.gd" id="10_4w02t"]
 [ext_resource type="Shader" path="res://shader/transition.gdshader" id="11_vptva"]
-[ext_resource type="Script" path="res://scripts/color_react.gd" id="12_uysyj"]
 [ext_resource type="PackedScene" uid="uid://dofwoj402bvsm" path="res://characters/enemies/enemy_ghost.tscn" id="13_3umkv"]
 [ext_resource type="AudioStream" uid="uid://duvoix2micwre" path="res://sound/deep-in-the-dell-126916.mp3" id="14_1r27o"]
 [ext_resource type="PackedScene" uid="uid://u8nu6xg2lxws" path="res://scenes/pause_menu.tscn" id="15_hp6de"]
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="90_cp"]
+[ext_resource type="Script" path="res://scripts/pickup.gd" id="90_pk"]
+[ext_resource type="Script" path="res://scripts/chest.gd" id="90_ch"]
+[ext_resource type="PackedScene" uid="uid://b2bjf2mx17iaj" path="res://characters/enemies/enemy-skeleton.tscn" id="91_sk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b2hbf"]
 texture = ExtResource("1_8qram")
@@ -16149,20 +16151,6 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_a1cd5")
 centered = false
 
-[node name="transition" type="CanvasLayer" parent="."]
-script = ExtResource("10_4w02t")
-
-[node name="color_react" type="ColorRect" parent="transition"]
-material = SubResource("ShaderMaterial_wucg5")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.00392157, 0.00392157, 0.00392157, 1)
-script = ExtResource("12_uysyj")
-metadata/_edit_use_anchors_ = true
-
 [node name="ghost" type="Node2D" parent="."]
 
 [node name="enemy-ghost" parent="ghost" instance=ExtResource("13_3umkv")]
@@ -16182,8 +16170,74 @@ position = Vector2(9532, 480)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_1r27o")
+bus = &"Music"
 autoplay = true
 
 [node name="pause_menu" parent="." instance=ExtResource("15_hp6de")]
+
+[node name="checkpoint" type="Area2D" parent="."]
+position = Vector2(7506, 230)
+script = ExtResource("90_cp")
+
+[node name="flechas_veneno" type="Area2D" parent="."]
+position = Vector2(2002, 470)
+script = ExtResource("90_pk")
+kind = "poison"
+amount = 5
+
+[node name="flechas_rapidas" type="Area2D" parent="."]
+position = Vector2(5602, 370)
+script = ExtResource("90_pk")
+kind = "quick"
+amount = 15
+
+[node name="flechas_pesadas" type="Area2D" parent="."]
+position = Vector2(8506, 230)
+script = ExtResource("90_pk")
+kind = "heavy"
+amount = 5
+
+[node name="kit_medico" type="Area2D" parent="."]
+position = Vector2(12370, 500)
+script = ExtResource("90_pk")
+kind = "health"
+
+[node name="bau_final" type="Area2D" parent="."]
+position = Vector2(14602, 560)
+script = ExtResource("90_ch")
+coins = 12
+
+[node name="esqueleto_extra1" parent="." instance=ExtResource("91_sk")]
+position = Vector2(2736, 416)
+
+[node name="esqueleto_saltador2" parent="." instance=ExtResource("91_sk")]
+position = Vector2(4391, 448)
+start_dormant = false
+jumper = true
+
+[node name="esqueleto_extra3" parent="." instance=ExtResource("91_sk")]
+position = Vector2(5167, 400)
+
+[node name="esqueleto_extra4" parent="." instance=ExtResource("91_sk")]
+position = Vector2(7042, 304)
+
+[node name="esqueleto_saltador5" parent="." instance=ExtResource("91_sk")]
+position = Vector2(7741, 240)
+start_dormant = false
+jumper = true
+
+[node name="esqueleto_extra6" parent="." instance=ExtResource("91_sk")]
+position = Vector2(8640, 256)
+
+[node name="fantasma_extra1" parent="." instance=ExtResource("13_3umkv")]
+position = Vector2(11500, 416)
+
+[node name="fantasma_extra2" parent="." instance=ExtResource("13_3umkv")]
+position = Vector2(12800, 416)
+
+[node name="esqueleto_saltador7" parent="." instance=ExtResource("91_sk")]
+position = Vector2(13693, 592)
+start_dormant = false
+jumper = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
