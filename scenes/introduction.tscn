@@ -28,4 +28,21 @@ layout_mode = 2
 theme = ExtResource("2_h7e36")
 text = "START"
 
+[node name="SkipLayer" type="CanvasLayer" parent="."]
+layer = 110
+
+[node name="SkipButton" type="Button" parent="SkipLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 70.0
+grow_horizontal = 0
+focus_mode = 0
+theme = ExtResource("2_h7e36")
+text = "SKIP (ESC)"
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="SkipLayer/SkipButton" to="." method="_on_skip_button_pressed"]

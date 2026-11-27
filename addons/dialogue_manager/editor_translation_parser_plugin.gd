@@ -6,7 +6,8 @@ const DialogueSettings = preload("./settings.gd")
 const DialogueManagerParseResult = preload("./components/parse_result.gd")
 
 
-func _parse_file(path: String, msgids: Array, msgids_context_plural: Array) -> void:
+func _parse_file(path: String) -> Array[PackedStringArray]:
+	var msgids_context_plural: Array[PackedStringArray] = []
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	var text: String = file.get_as_text()
 
@@ -21,7 +22,7 @@ func _parse_file(path: String, msgids: Array, msgids_context_plural: Array) -> v
 
 			known_keys.append(character_name)
 
-			msgids_context_plural.append([character_name.replace('"', '\\"'), "dialogue", ""])
+			msgids_context_plural.append(PackedStringArray([character_name.replace('"', '\\"'), "dialogue", ""]))
 
 	# Add all dialogue lines and responses
 	var dialogue: Dictionary = data.lines
@@ -34,9 +35,12 @@ func _parse_file(path: String, msgids: Array, msgids_context_plural: Array) -> v
 		known_keys.append(line.translation_key)
 
 		if line.translation_key == "" or line.translation_key == line.text:
-			msgids_context_plural.append([line.text.replace('"', '\\"'), "", ""])
+			msgids_context_plural.append(PackedStringArray([line.text.replace('"', '\\"'), "", ""]))
 		else:
-			msgids_context_plural.append([line.text.replace('"', '\\"'), line.translation_key.replace('"', '\\"'), ""])
+			msgids_context_plural.append(PackedStringArray([line.text.replace('"', '\\"'), line.translation_key.replace('"', '\\"'), ""]))
+
+
+	return msgids_context_plural
 
 
 func _get_recognized_extensions() -> PackedStringArray:
