@@ -2,20 +2,20 @@
 class_name DialogueResponse extends RefCounted
 
 
-const _DialogueConstants = preload("./constants.gd")
-
-
 ## The ID of this response
 var id: String
 
 ## The internal type of this dialogue object, always set to [code]TYPE_RESPONSE[/code].
-var type: String = _DialogueConstants.TYPE_RESPONSE
+var type: String = DMConstants.TYPE_RESPONSE
 
 ## The next line ID to use if this response is selected by the player.
 var next_id: String = ""
 
 ## [code]true[/code] if the condition of this line was met.
 var is_allowed: bool = true
+
+## The original condition text.
+var condition_as_text: String = ""
 
 ## A character (depending on the "characters in responses" behaviour setting).
 var character: String = ""
@@ -33,7 +33,7 @@ var text_replacements: Array[Dictionary] = []
 var tags: PackedStringArray = []
 
 ## The key to use for translating the text.
-var translation_key: String = ""
+var static_id: String = ""
 
 
 func _init(data: Dictionary = {}) -> void:
@@ -47,16 +47,30 @@ func _init(data: Dictionary = {}) -> void:
 		text = data.text
 		text_replacements = data.text_replacements
 		tags = data.tags
-		translation_key = data.translation_key
+		static_id = data.static_id
+		condition_as_text = data.condition_as_text
 
 
 func _to_string() -> String:
 	return "<DialogueResponse text=\"%s\">" % text
 
 
+## Check if a dialogue line has a given tag.
+func has_tag(tag_name: String) -> bool:
+	if tags.has(tag_name):
+		return true
+	else:
+		var wrapped: String = "%s=" % tag_name
+		for t: String in tags:
+			if t.begins_with(wrapped):
+				return true
+	return false
+
+
+## Get the value of a tag if the tag is in the form of [code]tag=value[/code]
 func get_tag_value(tag_name: String) -> String:
-	var wrapped := "%s=" % tag_name
-	for t in tags:
+	var wrapped: String = "%s=" % tag_name
+	for t: String in tags:
 		if t.begins_with(wrapped):
 			return t.replace(wrapped, "").strip_edges()
 	return ""
